@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        background: linear-gradient(to right, #6dd5ed, #2193b0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'poppins',sans-serif;
+    }
+    .container{
+        text-align: center;
+    }
+    h1{
+        color: #fff;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 3px black;
+        animation: glow 2s infinite alternate;
+    }
+    @keyframes glow{
+        from{
+            text-shadow: 1px 1px 3px black;
+        }
+        to{
+            text-shadow: 2px 2px 15px white;
+        }
+    }
+    .quote-container{
+        width: 450px;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    .quote-container:hover{
+        transform: scale(1.02);
+    }
+    .quote{
+        font: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 15px;
+        transition: opacity 0.3s ease;
+    }
+    button{
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        margin-top: 15px;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #ff6a00, #ee0979);
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    button:hover{
+        transform: scale(1.05);
+        background: linear-gradient(45deg, #ee0979, #ff6a00 );
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Random Quote Generator</h1>
+        <div class="quote-container">
+            <p id="quote">Click bilow to get inspired</p>
+            <button type="button" id="quote-button">Generate</button>
+        </div>
+    </div>
+
+    <script>
+        const quotes = [
+            "Don't watch the clock ; do what it does.keep going",
+            "Dream big and dare to fail.",
+            "You are stronger than you think.",
+            "Believe in yourself and all that you are.",
+            "Push yourself,because no one else is going to do it for you."
+        ];
+
+        const quote = document.getElementById("quote");
+        const button = document.getElementById("quote-button");
+        
+        button.addEventListener("click", () => {
+            const index = Math.floor(Math.random( )* quotes.length);
+            quote.style.opacity = 0;
+
+            setTimeout(() => {
+                quote.textContent = quotes[index];
+                quote.style.opacity = 1;
+            }, 300);
+
+        })
+    </script>
+</body>
+</html>
